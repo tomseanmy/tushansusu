@@ -1,0 +1,5 @@
+server:
+  port: 7001
+notice:
+  wxwork:
+    erp2: wxwork-bot-key
