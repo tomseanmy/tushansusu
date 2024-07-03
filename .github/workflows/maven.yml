@@ -18,6 +18,11 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn -Pnative package
+      - name: Get commit messages
+        id: get_commits
+        run: |
+          COMMITS=$(git log --pretty=format:"%s" ${{ github.sha }}^..HEAD)
+          echo "COMMITS=$COMMITS" >> $GITHUB_ENV
       - name: Release Github
         uses: actions/create-release@v1
         env:
@@ -27,7 +32,8 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
-          body: ${{ github. }}
+          body: |
+            ${{ steps.get_commits.outputs.COMMITS }}
       - name: Upload Asset
         uses: actions/upload-release-asset@v1.0.1
         env:
