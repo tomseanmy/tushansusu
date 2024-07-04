@@ -3,3 +3,12 @@ server:
 notice:
   wxwork:
     project-code: wxwork-bot-key
+logging:
+  file:
+    name: tushansusu.log
+  level:
+    com.github.tomseanmy.tushansusu: info
+
+spring:
+  main:
+    banner-mode: off
