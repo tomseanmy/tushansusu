@@ -1,6 +1,5 @@
 FROM eclipse-temurin:17-jre-alpine
-LABEL author=tomseanmy
-LABEL homepage=https://github.com/tomseanmy
+MAINTAINER tomsean "tom_sean@outlook.com"
 
 WORKDIR /data
 COPY target/tushansusu.jar /data/
