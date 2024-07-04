@@ -1,6 +1,6 @@
-<center>
+<p align="center">
   <h1>tushansusu</h1>
-</center>
+</p>
 
 
 ![ci](https://github.com/tomseanmy/tushansusu/actions/workflows/maven.yml/badge.svg)
