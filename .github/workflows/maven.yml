@@ -17,7 +17,7 @@ jobs:
           components: 'native-image'
           cache: maven
       - name: Build with Maven
-        run: mvn -Pnative package native:build -f pom.xml
+        run: mvn -Pnative package native:compile-no-fork -f pom.xml
       - name: Release Github
         id: create_release
         uses: actions/create-release@v1
