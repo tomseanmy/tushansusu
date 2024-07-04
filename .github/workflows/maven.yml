@@ -14,10 +14,10 @@ jobs:
         uses: graalvm/setup-graalvm@v1
         with:
           java-version: '17'
-          distribution: 'graalvm'
+          components: 'native-image'
           cache: maven
       - name: Build with Maven
-        run: mvn -Pnative package
+        run: mvn -Pnative package native-image:native-image
       - name: Release Github
         id: create_release
         uses: actions/create-release@v1
@@ -29,12 +29,15 @@ jobs:
           draft: false
           prerelease: false
           body: test action
+      - name: Get version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
       - name: Upload Asset
         uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./target/tushansusu
-          asset_name: tushansusu-v${{ github.ref }}
+          asset_path: target/tushansusu
+          asset_name: tushansusu-${{ steps.get_version.outputs.VERSION }}
           asset_content_type: application/octet-stream
