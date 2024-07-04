@@ -52,7 +52,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: tomseanmy/tushansusu
+          images: tomsean/tushansusu
 
       - name: Build and push Docker image
         id: push
@@ -67,6 +67,6 @@ jobs:
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v1
         with:
-          subject-name: tomseanmy/tushansusu
+          subject-name: tomsean/tushansusu
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
