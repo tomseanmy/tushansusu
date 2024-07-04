@@ -5,7 +5,7 @@
 
 ![ci](https://github.com/tomseanmy/tushansusu/actions/workflows/maven.yml/badge.svg)
 ![license](https://img.shields.io/github/license/tomseanmy/tushansusu)
-![release](https://img.shields.io/github/v/release/tomseanmy/tushansusu)
+![tag](https://img.shields.io/github/v/tag/tomseanmy/tushansusu)
 
 ## 一、项目背景
 1. 为什么创建这个项目
