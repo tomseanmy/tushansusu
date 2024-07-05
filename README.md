@@ -20,7 +20,17 @@
 1. 详细介绍程序的主要功能
 
    接收 GitLab Webhooks 消息并处理为企业微信Bot的数据格式，并通过HTTP的方式发送给企业微信Bot，实现将GitLab中发生的事件推送到企业微信。
+
 2. 功能亮点和特色
+
+   | GitLab Webhooks     | 支持 | 说明          |
+   | ------------------- | ---- | ------------- |
+   | Push Event          | ✅    | Release 0.0.3 |
+   | Merge Request Event | ✅    | Release 0.0.3 |
+   | Pipeline Event      | ✅    | Release 0.0.3 |
+   | Release Event       | ✅    | Release 0.0.3 |
+
+   > 其他未写入列表的事件均表示还未接入。
 
 ## 三、使用方法
 1. 开发环境要求
