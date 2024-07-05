@@ -33,7 +33,7 @@
 
    您并不需要与我的环境保持完全一致（如果一切顺利），我只是列出我的环境供您参考。
 
-   如果您没有这么着急要修改项目并使用，您可以试着提一些Feature在Issue了，也许某一天这个功能就出现在了Release列表里🫠。
+   如果您没有这么着急要修改项目并使用，您可以试着提一些Feature在Issue里，也许某一天这个功能就出现在了Releases列表了🫠。
 
 3. 启动配置
    - 完整配置
@@ -98,20 +98,34 @@
      $ docker run -d -p 7001:7001 -v /data/application.yml:/data/application.yml --name tushansusu --restart=unless-stopped ghcr.io/tomseanmy/tushansusu
      ```
 
+   - 使用Docker-Compose方式
 
-
-- 使用Docker-Compose方式
+     ```yaml
+     version: "3"
+      
+     services:
+       tushansusu:
+         image: ghcr.io/tomseanmy/tushansusu:latest
+         volumes:
+           - /data/application.yml:/data/application.yml
+         ports:
+           - "7001:7001"
+     ```
 
 ## 四、开发环境细节
-1. 开发工具和技术栈
-   - Spring Boot 版本
-   - 其他相关技术和框架
-2. 项目结构
-   - 主要的包和模块结构
-   - 关键代码文件的说明
-3. 代码规范和风格
-   - 遵循的代码规范
-   - 重要的编程约定
+- 主要的包和模块结构
+
+  ```text
+  - controller #接收来自外部的请求，比如GitLab的Webhooks回调
+  - handle     #处理Webhooks消息
+  - property   #参数配置
+  - util       #工具
+  - wxwork     #企业微信相关
+  ```
+
+- 关键代码文件的说明
+
+  您如果看过源码应该已经发现了，接收来自GitLab Webhooks的入参并非封装的数据Schema，而是直接使用JSONObject的形式，这是因为在我写这个项目之前，我尝试了其他GitHub上的开源项目，发现了一个叫[gitlab4j-api](https://github.com/gitlab4j/gitlab4j-api)的项目，他封装了GitLab的相关操作，于是我将他用在了此项目中。但在实际与GitLab通信的过程中，我发现[GitLab Webhooks](https://docs.gitlab.com/ee/user/project/integrations/webhook_events.html)上的数据与这个项目的数据Schema并不一致，特别是pipeline事件中的jobs属性在最新的GitLab(16.10.8 CE)中已经变成了builds，我的需求仅仅需要支持解析GitLab Webhooks的数据并转化为企业微信的消息，不需要向GitLab发起任何API请求，又考虑到或许以后的某一天GitLab又换了新的数据结构我的项目将不再支持又需要大费周章的建立Schema并发布，所以选择了JSONObject。当然这并不是一个很好的方案，但对我目前的需求来说足够了。
 
 ## 七、未来规划
 未来的版本会逐渐补齐GitLab Webhooks的各种事件（也可能不会）

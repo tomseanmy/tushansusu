@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  tushansusu:
+    image: ghcr.io/tomseanmy/tushansusu:latest
+    volumes:
+      - /data/application.yml:/data/application.yml
+    ports:
+      - "7001:7001"
