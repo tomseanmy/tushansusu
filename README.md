@@ -38,22 +38,22 @@
 3. 启动配置
    - 完整配置
 
-    ```yaml
-    server:
-      port: 7001
-    notice:
-      wxwork:
-        project-code: wxwork-bot-key
-    logging:
-      file:
-        name: tushansusu.log
-      level:
-        com.github.tomseanmy.tushansusu: info
+     ```yaml
+      server:
+        port: 7001
+      notice:
+        wxwork:
+          project-code: wxwork-bot-key
+      logging:
+        file:
+          name: tushansusu.log
+        level:
+          com.github.tomseanmy.tushansusu: info
     
-    spring:
-      main:
-        banner-mode: off
-	 ```
+      spring:
+        main:
+          banner-mode: off
+	  ```
 
    - server.port 启动端口
 
