@@ -94,7 +94,7 @@
    - 使用Docker方式
 
      ```shell
-     $ docker run -d -p 7001:7001 -v /data/application.yml:/data/application.yml --name tushansusu --restart=unless-stopped tomsean/tushansusu
+     $ docker run -d -p 7001:7001 -v /data/application.yml:/data/application.yml --name tushansusu --restart=unless-stopped ghcr.io/tomseanmy/tushansusu
      ```
 
 
