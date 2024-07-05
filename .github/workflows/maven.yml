@@ -9,13 +9,19 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
-permissions: write-all
+permissions:
+  actions: write
+  attestations: write
+  checks: write
+  packages: write
+  contents: write
+  deployments: write
+  pages: write
+  statuses: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
     steps:
       - uses: actions/checkout@v4
       - name: Set Up JDK17
