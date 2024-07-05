@@ -138,7 +138,7 @@
 
 - 关键代码文件的说明
 
-  您如果看过源码应该已经发现了，接收来自GitLab Webhooks的入参并非封装的数据Schema，而是直接使用JSONObject的形式，这是因为在我写这个项目之前，我尝试了其他开源项目，发现了一个叫[gitlab4j-api](https://github.com/gitlab4j/gitlab4j-api)的项目，他封装了GitLab的相关操作，于是我将他用在了此项目中。但在实际与GitLab通信的过程中，我发现[GitLab Webhooks](https://docs.gitlab.com/ee/user/project/integrations/webhook_events.html)上的数据与这个项目的数据Schema并不一致，特别是pipeline事件中的jobs属性在最新的GitLab(16.10.8 CE)中已经变成了builds，我的需求仅仅需要支持解析GitLab Webhooks的数据并转化为企业微信的消息，不需要向GitLab发起任何API请求，又考虑到或许以后的某一天GitLab又换了新的数据结构我的项目将不再支持又需要大费周章的建立Schema并发布，所以选择了JSONObject。当然这并不是一个很好的方案，但对我目前的需求来说足够了。
+  您如果看过源码应该已经发现了，接收来自GitLab Webhooks的入参并非封装的数据Schema，而是直接使用JSONObject的形式，这是因为在这个项目之前，我尝试了其他开源项目，发现了一个叫[gitlab4j-api](https://github.com/gitlab4j/gitlab4j-api)的项目，他封装了GitLab的相关操作，于是我将他用在了此项目中。但在实际与GitLab通信的过程中，我发现[GitLab Webhooks](https://docs.gitlab.com/ee/user/project/integrations/webhook_events.html)上的数据与这个项目的数据Schema并不一致，特别是pipeline事件中的jobs属性在最新的GitLab(16.10.8 CE)中已经变成了builds，我的需求仅仅需要支持解析GitLab Webhooks的数据并转化为企业微信的消息，不需要向GitLab发起任何API请求，又考虑到或许以后的某一天GitLab又换了新的数据结构我的项目将不再支持又需要大费周章的建立Schema并发布，所以选择了JSONObject。当然这并不是一个很好的方案，但对我目前的需求来说足够了。
 
 ## 七、未来规划
 未来的版本会逐渐补齐GitLab Webhooks的各种事件（也可能不会）
